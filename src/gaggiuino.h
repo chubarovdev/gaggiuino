@@ -25,7 +25,6 @@
 #include "peripherals/tof.h"
 
 
-
 // Define some const values
 #if defined SINGLE_BOARD
     #define GET_KTYPE_READ_EVERY    70 // max31855 amp module data read interval not recommended to be changed to lower than 70 (ms)
