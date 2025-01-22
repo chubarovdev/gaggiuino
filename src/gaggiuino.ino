@@ -143,7 +143,9 @@ static void sensorReadSwitches(void) {
 
 static void sensorsReadTemperature(void) {
   if (millis() > thermoTimer) {
-    currentState.temperature = thermocoupleRead() - runningCfg.offsetTemp;    
+    currentState.temperature = thermocoupleRead() - runningCfg.offsetTemp;
+    currentState.temperatureGroupHead = getGroupHeadTemp(); 
+    currentState.temperaturePreHeat = getPreHeatTemp();
     thermoTimer = millis() + GET_KTYPE_READ_EVERY;
   }
 }

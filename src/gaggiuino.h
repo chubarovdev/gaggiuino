@@ -23,6 +23,8 @@
 #include "peripherals/esp_comms.h"
 #include "peripherals/led.h"
 #include "peripherals/tof.h"
+#include "peripherals/ntc_group_head.h"
+#include "peripherals/ntc_pre_heat.h"
 
 
 // Define some const values
