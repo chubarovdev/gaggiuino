@@ -516,8 +516,10 @@ void lcdSetUpTime(float val) {
   myNex.writeNum("systemUpTime", val);
 }
 
-void lcdSetTemperature(uint16_t val) {
-  myNex.writeNum("currentTemp", val);
+void lcdSetTemperature(uint16_t boiler, uint16_t preHeat, uint16_t groupHead) {
+  myNex.writeNum("currentTemp", boiler);
+  myNex.writeNum("preHeatTemp", preHeat);
+  myNex.writeNum("groupHeadTemp", groupHead);
 }
 
 void lcdSetTemperatureDecimal(uint16_t val) {

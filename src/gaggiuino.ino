@@ -357,14 +357,16 @@ static void lcdRefresh(void) {
       ? currentState.temperature / (float)brewTempSetPoint + (float)ACTIVE_PROFILE(runningCfg).setpoint
       : currentState.temperature;
 
-    lcdSetTemperature(std::floor((uint16_t)currentState.waterTemperature));
+    lcdSetTemperature(std::floor((uint16_t)currentState.waterTemperature), std::floor((uint16_t)currentState.temperaturePreHeat),std::floor((uint16_t)currentState.temperatureGroupHead));
 
     /*LCD weight & temp & water lvl output*/
     switch (lcdCurrentPageId) {
       case NextionPage::Home:
         // temp decimal handling
         tempDecimal = (currentState.waterTemperature - (uint16_t)currentState.waterTemperature) * 10;
-        lcdSetTemperatureDecimal(tempDecimal);        
+        lcdSetTemperatureDecimal(tempDecimal);
+        lcdSetTemperature(std::floor((uint16_t)currentState.waterTemperature), std::floor((uint16_t)currentState.temperaturePreHeat),std::floor((uint16_t)currentState.temperatureGroupHead));
+        
         // water lvl
         
         //weight
@@ -375,6 +377,8 @@ static void lcdRefresh(void) {
         // temp decimal handling
         tempDecimal = (currentState.waterTemperature - (uint16_t)currentState.waterTemperature) * 10;
         lcdSetTemperatureDecimal(tempDecimal);
+        lcdSetTemperature(std::floor((uint16_t)currentState.waterTemperature), std::floor((uint16_t)currentState.temperaturePreHeat),std::floor((uint16_t)currentState.temperatureGroupHead));
+
         // If the weight output is a negative value lower than -0.8 you might want to tare again before extraction starts.
         if (currentState.shotWeight) lcdSetWeight(currentState.shotWeight > -0.8f ? currentState.shotWeight : -0.9f);
         /*LCD flow output*/
